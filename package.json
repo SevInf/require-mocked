@@ -1,0 +1,35 @@
+{
+  "name": "require-mocked",
+  "version": "0.1.0",
+  "description": "Utility library that allows you to inject your mocks into modules code",
+  "main": "lib/require-mocked.js",
+  "keywords": [
+    "mock",
+    "stub",
+    "fake",
+    "modules",
+    "testing"
+  ],
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Sergej Tatarincev <sevinf@yandex-team.ru>",
+  "license": "MIT",
+  "dependencies": {
+    "require-like": "~0.1.2"
+  },
+  "devDependencies": {
+    "chai": "~1.7.2",
+    "mocha": "~1.12.0"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/SevInf/require-mocked.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SevInf/require-mocked/issues"
+  }
+}
