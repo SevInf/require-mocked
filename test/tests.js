@@ -65,4 +65,16 @@ describe('mocked-module', function () {
             expect(module.fs).to.equal(require('fs'));
         });
     });
+
+    describe('resolves option', function () {
+        it('resolves to a given path instead of original', function() {
+            var module = requireMocked(require.resolve('./fixtures/resolves'), {
+                resolves: {
+                    './direct': '/not/a/real/direct.js'
+                }
+            });
+
+            expect(module.directPath).to.equal('/not/a/real/direct.js');
+        });
+    });
 });

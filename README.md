@@ -11,7 +11,7 @@ npm install require-mocked
 
 ## Usage
 
-Suppose you want to test some module that uses `fs` (eiser directly, or throught one of its dependencies) but 
+Suppose you want to test some module that uses `fs` (eiser directly, or throught one of its dependencies) but
 you want it to use some stun instead of the real FS.
 
 ```javascript
@@ -32,6 +32,8 @@ Module exposes single function - `requireMocked`. It accepts following parameter
 * `opts` - loading options:
     * `opts.mocks` - mocks to use when loading module or its dependencies. Keys of the object represents module
     ids, values - the object to use instead of real module.
+    * `opts.resolves` - stub `require.resolve` for the loaded module so it will return given path for
+    instead of original. Format is `{"moduleId": "stub/path"}`.
     * `opts.ignoreMocks` - array of the module id that will always load real modules instead of mocks.
 
 ## Similar projects
