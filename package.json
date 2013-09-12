@@ -1,6 +1,6 @@
 {
   "name": "require-mocked",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Utility library that allows you to inject your mocks into modules code",
   "main": "lib/require-mocked.js",
   "keywords": [
