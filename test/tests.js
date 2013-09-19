@@ -1,6 +1,6 @@
 'use strict';
 var expect = require('chai').expect,
-    requireMocked = require('..');
+    requireMocked = require('..')(__filename);
 
 describe('mocked-module', function () {
     var mockFS = {
@@ -9,7 +9,7 @@ describe('mocked-module', function () {
 
     describe('direct require', function() {
         it('loads mock', function() {
-            var module = requireMocked(require.resolve('./fixtures/direct'), {
+            var module = requireMocked('./fixtures/direct', {
                 mocks: {
                     fs: mockFS
                 }
@@ -19,7 +19,7 @@ describe('mocked-module', function () {
         });
 
         it('loads original module if mock is not specified', function() {
-            var module = requireMocked(require.resolve('./fixtures/direct'));
+            var module = requireMocked('./fixtures/direct');
             expect(module.fs).to.equal(require('fs'));
         });
 
@@ -27,7 +27,7 @@ describe('mocked-module', function () {
 
     describe('nested require', function() {
         it('loads mock', function() {
-            var module = requireMocked(require.resolve('./fixtures/nested'), {
+            var module = requireMocked('./fixtures/nested', {
                 mocks: {
                     fs: mockFS
                 }
@@ -40,7 +40,7 @@ describe('mocked-module', function () {
 
     describe('require from node_modules', function() {
         it('loads mock', function() {
-            var module = requireMocked(require.resolve('./fixtures/from-node-modules'), {
+            var module = requireMocked('./fixtures/from-node-modules', {
                 mocks: {
                     fs: mockFS
                 }

@@ -12,12 +12,12 @@ npm install require-mocked
 ## Usage
 
 Suppose you want to test some module that uses `fs` (eiser directly, or throught one of its dependencies) but
-you want it to use some stun instead of the real FS.
+you want it to use some stub instead of the real FS.
 
 ```javascript
-var requireMocked = require('require-mocked');
+var requireMocked = require('require-mocked')(__filename);
 
-var moduleUnderTest = requireMocked(require.resolve('./path/to/your/module'), {
+var moduleUnderTest = requireMocked('./path/to/your/module', {
     mocks: {
         fs: {
             //your stub code
@@ -26,9 +26,11 @@ var moduleUnderTest = requireMocked(require.resolve('./path/to/your/module'), {
 });
 ```
 
-Module exposes single function - `requireMocked`. It accepts following parameters:
+To create `requireMocked` function you need to pass your module's file name. It will be used to resolve
+paths the same way as original `require` for your module.
+`requireMocked` accepts following parameters:
 
-* `path` - absolute path to the module you want to load. Use `require.resolve` to get it from relative path;
+* `path` - path to the module you want to load;
 * `opts` - loading options:
     * `opts.mocks` - mocks to use when loading module or its dependencies. Keys of the object represents module
     ids, values - the object to use instead of real module.
